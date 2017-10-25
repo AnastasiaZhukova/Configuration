@@ -2,8 +2,6 @@ package com.github.anastasiazhukova.configuration.calculator;
 
 import com.google.gson.annotations.SerializedName;
 
-import static com.github.anastasiazhukova.configuration.constants.Constants.ERROR_MESSAGE;
-
 public class Result {
 
     @SerializedName("result")
