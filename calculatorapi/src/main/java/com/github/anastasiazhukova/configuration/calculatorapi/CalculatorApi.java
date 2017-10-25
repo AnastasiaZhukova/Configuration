@@ -21,6 +21,11 @@ public class CalculatorApi implements ICalculatorApi {
     }
 
     @Override
+    public String calculateProduct(final double pValue1, final double pValue2) {
+        return evaluate(pValue1 + "*" + pValue2);
+    }
+
+    @Override
     public String evaluate(final String pInput) {
         try {
             return mCalculatorURL + CalculatorApiConstants.CALCULATE + URLEncoder.encode(pInput, "UTF-8");

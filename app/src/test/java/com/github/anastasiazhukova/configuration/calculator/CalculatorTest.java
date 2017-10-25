@@ -22,6 +22,11 @@ public class CalculatorTest {
     }
 
     @Test
+    public void multiply() throws Exception {
+        assertEquals(expectedResult, mCalculator.multiply(2, 10));
+    }
+
+    @Test
     public void evaluate() throws Exception {
         assertEquals(expectedResult, mCalculator.evaluate("10+10"));
     }
