@@ -7,12 +7,15 @@ import static com.github.anastasiazhukova.configuration.constants.Constants.ERRO
 public class Calculator implements ICalculator {
 
     private final String PLUS_SPLITTER = "\\+";
+    private final String MULTIPLY_SPLITTER = "\\*";
 
     @Override
     public Result calculateResult(final String pInput) {
         Result result;
         if (pInput.contains("+")) {
             result = countSum(pInput);
+        } else if (pInput.contains("*")) {
+            result = countProduct(pInput);
         } else {
             result = setErrorResult();
         }
@@ -29,6 +32,22 @@ public class Calculator implements ICalculator {
                 sum += Double.valueOf(value);
             }
             result.setResult(String.valueOf(sum));
+        } catch (final Exception pE) {
+            result = setErrorResult();
+        }
+        return result;
+    }
+
+    Result countProduct(final String pInput) {
+        Result result = new Result();
+        try {
+            double product = 1;
+            final String[] values = pInput.split(MULTIPLY_SPLITTER);
+            for (String value :
+                    values) {
+                product *= Double.valueOf(value);
+            }
+            result.setResult(String.valueOf(product));
         } catch (final Exception pE) {
             result = setErrorResult();
         }
