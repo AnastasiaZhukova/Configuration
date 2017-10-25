@@ -12,7 +12,12 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
+        debug {
+            buildConfigField "String", "CALCULATOR_URL", "\"https://add-and-multiply-calculator.appspot.com/\""
+        }
         release {
+            buildConfigField "String", "CALCULATOR_URL", "\"https://add-calculator.appspot.com/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
