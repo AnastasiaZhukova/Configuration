@@ -12,10 +12,35 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
+        debug {
+            buildConfigField "String", "CALCULATOR_URL", "\"https://add-and-multiply-calculator.appspot.com/\""
+            buildConfigField "String", "CONFIG_URL", "\"https://configuration-backend.appspot.com/\""
+        }
         release {
+            buildConfigField "String", "CALCULATOR_URL", "\"https://add-calculator.appspot.com/\""
+            buildConfigField "String", "CONFIG_URL", "\"https://configuration-backend.appspot.com/\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    flavorDimensions "store"
+
+    productFlavors {
+
+        GooglePlay {
+            flavorDimension "store"
+            buildConfigField "String", "STORE_NAME", "\"Google play\""
+            buildConfigField "String", "SHARE_URL", "\"http://googlestore.com\""
+        }
+
+        Amazon {
+            flavorDimension "store"
+            buildConfigField "String", "STORE_NAME", "\"Amazon\""
+            buildConfigField "String", "SHARE_URL", "\"http://amazon.com\""
+        }
+
     }
 }
 
@@ -24,7 +49,14 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+
+    compile project(':domain')
+    compile project(':calculatorapi')
+    compile project(':configapi')
+
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
 }
