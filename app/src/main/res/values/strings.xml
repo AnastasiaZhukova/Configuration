@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Configuration</string>
+    <string name="button">Calculate</string>
+    <string name="a_b">a+b</string>
 </resources>
