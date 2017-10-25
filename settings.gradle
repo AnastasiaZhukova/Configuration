@@ -1,1 +1,1 @@
-include ':app', ':calculatorbackend', ':domain'
+include ':app', ':calculatorbackend', ':domain', ':calculatorapi'
